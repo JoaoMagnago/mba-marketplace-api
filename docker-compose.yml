@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: mba-marketplace
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: mba-marketplace
+
+  cache:
+    container_name: mba-marketplace-cache
+    image: redis
+    ports:
+      - 6380:6380
+    volumes:
+      - ./data/redis:/data
