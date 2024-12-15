@@ -1,5 +1,5 @@
-// import { StudentAlreadyExistsError } from '@/domain/forum/application/use-cases/errors/student-already-exists-error'
-// import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/register-student'
+// import { SellerAlreadyExistsError } from '@/domain/forum/application/use-cases/errors/seller-already-exists-error'
+// import { RegisterSellerUseCase } from '@/domain/forum/application/use-cases/register-seller'
 // import { Public } from '@/infra/auth/public'
 // import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import {
@@ -24,7 +24,7 @@ import {
 // @Public()
 export class CreateAccountController {
   constructor(
-    // private registerStudent: RegisterStudentUseCase
+    // private registerSeller: RegisterSellerUseCase
   ) { }
 
   @Post()
@@ -35,7 +35,7 @@ export class CreateAccountController {
   ) {
     // const { name, email, password } = body
 
-    // const result = await this.registerStudent.execute({
+    // const result = await this.registerSeller.execute({
     //   name,
     //   email,
     //   password,
@@ -45,7 +45,7 @@ export class CreateAccountController {
     //   const error = result.value
 
     //   switch (error.constructor) {
-    //     case StudentAlreadyExistsError:
+    //     case SellerAlreadyExistsError:
     //       throw new ConflictException(error.message)
     //     default:
     //       throw new BadRequestException(error.message)
