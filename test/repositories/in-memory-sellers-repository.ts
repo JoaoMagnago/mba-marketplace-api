@@ -21,4 +21,14 @@ export class InMemorySellersRepository implements SellersRepository {
 
     return seller
   }
+
+  async findByPhone(phone: string) {
+    const seller = this.items.find((item) => item.phone === phone)
+
+    if (!seller) {
+      return null
+    }
+
+    return seller
+  }
 }

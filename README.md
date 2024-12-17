@@ -3,7 +3,7 @@
 - [X] Deve ser possível cadastrar novos usuários
   - [X] Deve ser feito o hash da senha do usuário
   - [X] Não deve ser possível cadastrar usuário com e-mail duplicado
-  - [ ] Não deve ser possível cadastrar usuário com telefone duplicado
+  - [X] Não deve ser possível cadastrar usuário com telefone duplicado
 - [ ] Deve ser possível atualizar os dados do usuário
   - [ ] Deve ser feito o hash da senha do usuário
   - [ ] Não deve ser possível atualizar para um e-mail duplicado

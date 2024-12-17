@@ -9,6 +9,7 @@ interface RegisterSellerUseCaseRequest {
   name: string
   email: string
   password: string
+  phone: string
 }
 
 type RegisterSellerUseCaseResponse = Either<
@@ -29,10 +30,12 @@ export class RegisterSellerUseCase {
     name,
     email,
     password,
+    phone,
   }: RegisterSellerUseCaseRequest): Promise<RegisterSellerUseCaseResponse> {
-    const sudentWithSameEmail = await this.sellersRepository.findByEmail(email)
+    const sellerWithSameEmail = await this.sellersRepository.findByEmail(email)
+    const sellerWithSamePhone = await this.sellersRepository.findByPhone(phone)
 
-    if (sudentWithSameEmail) {
+    if (sellerWithSameEmail || sellerWithSamePhone) {
       return left(new SellerAlreadyExistsError(email))
     }
 
@@ -42,6 +45,7 @@ export class RegisterSellerUseCase {
       name,
       email,
       password: hashedPassword,
+      phone
     })
 
     await this.sellersRepository.create(seller)

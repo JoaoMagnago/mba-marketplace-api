@@ -18,6 +18,7 @@ const createAccountBodySchema = z.object({
   name: z.string(),
   email: z.string().email(),
   password: z.string(),
+  phone: z.string(),
 })
 
 type CreateAccountBodySchema = z.infer<typeof createAccountBodySchema>
@@ -35,12 +36,13 @@ export class CreateAccountController {
   async handle(
     @Body() body: CreateAccountBodySchema
   ) {
-    const { name, email, password } = body
+    const { name, email, password, phone } = body
 
     const result = await this.registerSeller.execute({
       name,
       email,
       password,
+      phone,
     })
 
     if (result.isLeft()) {

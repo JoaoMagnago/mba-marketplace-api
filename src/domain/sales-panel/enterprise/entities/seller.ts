@@ -5,6 +5,7 @@ export interface SellerProps {
   name: string
   email: string
   password: string
+  phone: string
 }
 
 export class Seller extends Entity<SellerProps> {
@@ -18,6 +19,10 @@ export class Seller extends Entity<SellerProps> {
 
   get password() {
     return this.props.password
+  }
+
+  get phone() {
+    return this.props.phone
   }
 
   static create(props: SellerProps, id?: UniqueEntityID) {
