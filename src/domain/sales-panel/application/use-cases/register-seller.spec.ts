@@ -1,20 +1,18 @@
-// import { FakeHasher } from 'test/cryptography/fake-hasher'
+import { FakeHasher } from 'test/cryptography/fake-hasher'
 import { InMemorySellersRepository } from 'test/repositories/in-memory-sellers-repository'
 import { RegisterSellerUseCase } from './register-seller'
 
 let inMemorySellersRepository: InMemorySellersRepository
-// let fakeHasher: FakeHasher
+let fakeHasher: FakeHasher
 
 let sut: RegisterSellerUseCase
 
 describe('Register Seller', () => {
   beforeEach(() => {
     inMemorySellersRepository = new InMemorySellersRepository()
-    // fakeHasher = new FakeHasher()
+    fakeHasher = new FakeHasher()
 
-    sut = new RegisterSellerUseCase(inMemorySellersRepository
-      // , fakeHasher
-    )
+    sut = new RegisterSellerUseCase(inMemorySellersRepository, fakeHasher)
   })
 
   it('should be able to register a new seller', async () => {
@@ -37,9 +35,9 @@ describe('Register Seller', () => {
       password: '123456'
     })
 
-    // const hashedPassword = await fakeHasher.hash('123456')
+    const hashedPassword = await fakeHasher.hash('123456')
 
     expect(result.isRight()).toBe(true)
-    // expect(inMemorySellersRepository.items[0].password).toEqual(hashedPassword)
+    expect(inMemorySellersRepository.items[0].password).toEqual(hashedPassword)
   })
 })

@@ -1,6 +1,7 @@
 import { Either, left, right } from '@/core/either'
 import { Injectable } from '@nestjs/common'
 import { Seller } from '../../enterprise/entities/seller'
+import { HashGenerator } from '../cryptography/hash-generator'
 import { SellersRepository } from '../repositories/sellers-repository'
 import { SellerAlreadyExistsError } from './error/seller-already-exists-error'
 
@@ -19,10 +20,9 @@ type RegisterSellerUseCaseResponse = Either<
 
 @Injectable()
 export class RegisterSellerUseCase {
-  // eslint-disable-next-line prettier/prettier
   constructor(
     private sellersRepository: SellersRepository,
-    // private hashGenerator: HashGenerator
+    private hashGenerator: HashGenerator
   ) { }
 
   async execute({
@@ -36,12 +36,12 @@ export class RegisterSellerUseCase {
       return left(new SellerAlreadyExistsError(email))
     }
 
-    // const hashedPassword = await this.hashGenerator.hash(password)
+    const hashedPassword = await this.hashGenerator.hash(password)
 
     const seller = Seller.create({
       name,
       email,
-      password,
+      password: hashedPassword,
     })
 
     await this.sellersRepository.create(seller)
