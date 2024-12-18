@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common'
 
 import { DatabaseModule } from '../database/database.module'
 
-import { AuthenticateSellerUseCase } from '@/domain/sales-panel/application/use-cases/authenticate-student'
+import { AuthenticateSellerUseCase } from '@/domain/sales-panel/application/use-cases/authenticate-seller'
 import { RegisterSellerUseCase } from '@/domain/sales-panel/application/use-cases/register-seller'
 import { CryptographyModule } from '../cryptography/cryptography.module'
 import { AuthenticateController } from './controllers/authenticate.controller'

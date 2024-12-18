@@ -1,4 +1,4 @@
-import { AuthenticateSellerUseCase } from '@/domain/sales-panel/application/use-cases/authenticate-student'
+import { AuthenticateSellerUseCase } from '@/domain/sales-panel/application/use-cases/authenticate-seller'
 import { WrongCredentialsError } from '@/domain/sales-panel/application/use-cases/errors/wrong-credentials-error'
 import { Public } from '@/infra/auth/public'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
@@ -23,7 +23,7 @@ type AuthenticateBodySchema = z.infer<typeof authenticateBodySchema>
 @Public()
 export class AuthenticateController {
   constructor(
-    private authenticateStudent: AuthenticateSellerUseCase
+    private authenticateSeller: AuthenticateSellerUseCase
   ) { }
 
   @Post()
@@ -31,7 +31,7 @@ export class AuthenticateController {
   async handle(@Body() body: AuthenticateBodySchema) {
     const { email, password } = body
 
-    const result = await this.authenticateStudent.execute({
+    const result = await this.authenticateSeller.execute({
       email,
       password
     })
