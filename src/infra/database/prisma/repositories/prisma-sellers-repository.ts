@@ -30,4 +30,18 @@ export class PrismaSellersRepository implements SellersRepository {
 
     return PrismaSellerMapper.toDomain(seller)
   }
+
+  async findByPhone(phone: string): Promise<Seller | null> {
+    const seller = await this.prisma.user.findUnique({
+      where: {
+        phone
+      }
+    })
+
+    if (!seller) {
+      return null
+    }
+
+    return PrismaSellerMapper.toDomain(seller)
+  }
 } 

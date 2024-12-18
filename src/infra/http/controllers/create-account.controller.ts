@@ -11,7 +11,7 @@ import {
   UsePipes,
 } from '@nestjs/common';
 
-import { SellerAlreadyExistsError } from '@/domain/sales-panel/application/use-cases/error/seller-already-exists-error';
+import { SellerAlreadyExistsError } from '@/domain/sales-panel/application/use-cases/errors/seller-already-exists-error';
 import { z } from 'zod';
 
 const createAccountBodySchema = z.object({

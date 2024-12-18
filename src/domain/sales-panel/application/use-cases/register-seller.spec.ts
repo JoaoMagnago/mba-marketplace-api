@@ -1,6 +1,6 @@
 import { FakeHasher } from 'test/cryptography/fake-hasher'
 import { InMemorySellersRepository } from 'test/repositories/in-memory-sellers-repository'
-import { SellerAlreadyExistsError } from './error/seller-already-exists-error'
+import { SellerAlreadyExistsError } from './errors/seller-already-exists-error'
 import { RegisterSellerUseCase } from './register-seller'
 
 let inMemorySellersRepository: InMemorySellersRepository

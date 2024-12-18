@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common'
 import { Seller } from '../../enterprise/entities/seller'
 import { HashGenerator } from '../cryptography/hash-generator'
 import { SellersRepository } from '../repositories/sellers-repository'
-import { SellerAlreadyExistsError } from './error/seller-already-exists-error'
+import { SellerAlreadyExistsError } from './errors/seller-already-exists-error'
 
 interface RegisterSellerUseCaseRequest {
   name: string
