@@ -37,16 +37,15 @@ export class EditSellerUseCase {
 
     const sellerWithSameEmail = await this.sellersRepository.findByEmail(email)
 
-    if (sellerWithSameEmail) {
+    if (sellerWithSameEmail && sellerWithSameEmail.email !== seller.email) {
       return left(new SellerAlreadyExistsError(email, 'email'))
     }
 
     const sellerWithSamePhone = await this.sellersRepository.findByPhone(phone)
 
-    if (sellerWithSamePhone) {
+    if (sellerWithSamePhone && sellerWithSamePhone.phone !== seller.phone) {
       return left(new SellerAlreadyExistsError(phone, 'phone'))
     }
-
 
     seller.name = name
     seller.email = email

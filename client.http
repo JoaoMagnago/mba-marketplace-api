@@ -1,0 +1,38 @@
+@baseUrl = http://localhost:3333
+@authToken = {{authenticate.response.body.access_token}}
+
+# @name create_account
+POST {{baseUrl}}/accounts
+Content-Type: application/json
+
+{
+  "name": "Diego Fernandes",
+  "email": "diego@email.com",
+  "password": "123456",
+  "phone": "(12) 99999-9999"
+}
+
+###
+
+# @name authenticate
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+  "email": "diego@email.com",
+  "password": "123456"
+}
+
+###
+
+# @name edit_account
+PUT {{baseUrl}}/accounts/30176aee-b7f9-4fd8-88f4-2a4ab4a1216f
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "name": "Diego Fernandes",
+  "email": "diego@email.com",
+  "password": "123456",
+  "phone": "(12) 99999-9997"
+}

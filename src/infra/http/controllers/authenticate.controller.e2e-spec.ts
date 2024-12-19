@@ -24,19 +24,15 @@ describe('Authenticate (E2E)', () => {
   })
 
   test('[POST] /sessions', async () => {
-    const seller = await sellerFactory.makePrismaSeller({
+    await sellerFactory.makePrismaSeller({
       email: 'johndoe@example.com',
       password: await hash('123456', 8)
     })
-
-    console.log(seller)
 
     const response = await request(app.getHttpServer()).post('/sessions').send({
       email: 'johndoe@example.com',
       password: '123456'
     })
-
-    console.log(response.body)
 
     expect(response.statusCode).toBe(201)
     expect(response.body).toEqual({

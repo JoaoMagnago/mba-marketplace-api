@@ -36,7 +36,7 @@ export class RegisterSellerUseCase {
     const sellerWithSamePhone = await this.sellersRepository.findByPhone(phone)
 
     if (sellerWithSameEmail || sellerWithSamePhone) {
-      return left(new SellerAlreadyExistsError(email))
+      return left(new SellerAlreadyExistsError(email, 'email'))
     }
 
     const hashedPassword = await this.hashGenerator.hash(password)
