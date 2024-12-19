@@ -17,6 +17,31 @@ export class PrismaSellersRepository implements SellersRepository {
     })
   }
 
+  async save(seller: Seller): Promise<void> {
+    const data = PrismaSellerMapper.toPrisma(seller)
+
+    await this.prisma.user.update({
+      where: {
+        id: seller.id.toString(),
+      },
+      data,
+    })
+  }
+
+  async findById(id: string): Promise<Seller | null> {
+    const seller = await this.prisma.user.findUnique({
+      where: {
+        id
+      }
+    })
+
+    if (!seller) {
+      return null
+    }
+
+    return PrismaSellerMapper.toDomain(seller)
+  }
+
   async findByEmail(email: string): Promise<Seller | null> {
     const seller = await this.prisma.user.findUnique({
       where: {

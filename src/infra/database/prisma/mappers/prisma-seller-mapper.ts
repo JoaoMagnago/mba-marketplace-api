@@ -10,6 +10,7 @@ export class PrismaSellerMapper {
       email: raw.email,
       password: raw.password,
       phone: raw.phone,
+      createdAt: raw.createdAt,
     }, new UniqueEntityID(raw.id))
   }
 
@@ -20,6 +21,7 @@ export class PrismaSellerMapper {
       email: seller.email,
       password: seller.password,
       phone: seller.phone,
+      createdAt: seller.createdAt,
     }
   }
 }
